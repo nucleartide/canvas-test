@@ -12,25 +12,29 @@
 
       canvas {
         background-color: white;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: -webkit-crisp-edges;
+        image-rendering: pixelated;
+        image-rendering: crisp-edges;
       }
     </style>
   </head>
   <body>
     <script>
       // Make a canvas.
-      const makeCanvas = (w, h, ratio) => {
+      const makeCanvas = (w, h, { ratio, pixelated } = {}) => {
         const r = ratio || window.devicePixelRatio;
         const c = document.createElement('canvas');
-        c.width = r * w;
-        c.height = r * h;
-        c.style.width = w + 'px';
-        c.style.height = h + 'px';
-        c.getContext('2d').scale(r, r);
+        c.width = w;
+        c.height = h;
+        c.style.width = 4*w+'px';
+        c.style.height = 4*h+'px';
+        //c.getContext('2d').scale(r, r);
         return [c, c.getContext('2d')];
       };
 
       // Actually make a canvas.
-      const [el, context] = makeCanvas(500, 500);
+      const [el, context] = makeCanvas(128, 128, { pixelated: true });
       document.body.appendChild(el);
 
       // Draw text.
@@ -40,9 +44,9 @@
 
       // Draw line.
       context.beginPath();
-      context.moveTo(100, 150);
-      context.lineTo(450, 50);
-      context.lineWidth = 15; // Customize line width.
+      context.moveTo(10, 10);
+      context.lineTo(50, 50);
+      context.lineWidth = 1; // Customize line width.
       context.strokeStyle = 'papayawhip'; // Customize line color.
       context.strokeStyle = '#aec';
       context.strokeStyle = 'rgb(11, 181, 219)';
@@ -57,7 +61,7 @@
 
       // Draw rect.
       context.beginPath();
-      context.rect(188, 50, 200, 100); // x, y, w, h
+      context.rect(90, 90, 10, 10); // x, y, w, h
       context.fillStyle = 'orange';
       context.fill();
       context.lineWidth = 7;
@@ -76,6 +80,7 @@
 
       // Draw circle.
       // You can also make semi-circles using this method.
+      /*
       context.beginPath();
       context.arc(60, 60, 20, 0, 2 * Math.PI); // x, y, r, start, end
       context.fillStyle = 'green';
@@ -83,12 +88,13 @@
       context.lineWidth = 5;
       context.strokeStyle = '#003300';
       context.stroke();
+      */
 
       // You can make linear gradients.
       // You can make radial gradients.
 
       // You can make patterns. Perhaps useful for dithering?
-      {
+      /* {
         const i = new Image();
         i.src = 'https://www.html5canvastutorials.com/demos/assets/wood-pattern.png';
         i.onload = () => {
@@ -97,6 +103,17 @@
           context.fillStyle = p;
           context.fill();
         };
+      } */
+
+      // You can draw images.
+      // You can set image size.
+      // You can crop an image.
+
+      // Test pixelated image.
+      {
+        const i = new Image;
+        //i.onload = () => context.drawImage(i, 0, 0);
+        i.src = 'https://mdn.mozillademos.org/files/12640/cat.png';
       }
     </script>
   </body>
