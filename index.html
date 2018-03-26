@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: papayawhip;
+      }
+
+      canvas {
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // Make a canvas.
+      const makeCanvas = (w, h, ratio) => {
+        const r = ratio || window.devicePixelRatio;
+        const c = document.createElement('canvas');
+        c.width = r * w;
+        c.height = r * h;
+        c.style.width = w + 'px';
+        c.style.height = h + 'px';
+        c.getContext('2d').scale(r, r);
+        return [c, c.getContext('2d')];
+      };
+
+      // Actually make a canvas.
+      const [el, context] = makeCanvas(500, 500);
+      document.body.appendChild(el);
+
+      // Draw text.
+      context.font = '40pt Calibri';
+      context.fillStyle = 'blue';
+      context.fillText('Hello world!', 150, 100);
+
+      // Draw line.
+      context.beginPath();
+      context.moveTo(100, 150);
+      context.lineTo(450, 50);
+      context.lineWidth = 15; // Customize line width.
+      context.strokeStyle = 'papayawhip'; // Customize line color.
+      context.strokeStyle = '#aec';
+      context.strokeStyle = 'rgb(11, 181, 219)';
+      context.lineCap = 'butt'; // Customize line endings.
+      context.lineCap = 'round';
+      context.lineCap = 'square';
+      context.stroke();
+    </script>
+  </body>
+</html>
