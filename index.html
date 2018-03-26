@@ -50,6 +50,54 @@
       context.lineCap = 'round';
       context.lineCap = 'square';
       context.stroke();
+
+      // You can draw line curves.
+      // You can draw line paths.
+      // You can draw custom shapes.
+
+      // Draw rect.
+      context.beginPath();
+      context.rect(188, 50, 200, 100); // x, y, w, h
+      context.fillStyle = 'orange';
+      context.fill();
+      context.lineWidth = 7;
+      context.strokeStyle = 'black';
+      context.stroke();
+
+      /* API experiment:
+      <Canvas>
+        <Rect>
+          <Circle></Circle>
+        </Rect>
+        <Circle></Circle>
+        <Shape />
+      </Canvas>
+      */
+
+      // Draw circle.
+      // You can also make semi-circles using this method.
+      context.beginPath();
+      context.arc(60, 60, 20, 0, 2 * Math.PI); // x, y, r, start, end
+      context.fillStyle = 'green';
+      context.fill();
+      context.lineWidth = 5;
+      context.strokeStyle = '#003300';
+      context.stroke();
+
+      // You can make linear gradients.
+      // You can make radial gradients.
+
+      // You can make patterns. Perhaps useful for dithering?
+      {
+        const i = new Image();
+        i.src = 'https://www.html5canvastutorials.com/demos/assets/wood-pattern.png';
+        i.onload = () => {
+          const p = context.createPattern(i, 'repeat');
+          context.rect(0, 0, el.width, el.height);
+          context.fillStyle = p;
+          context.fill();
+        };
+      }
     </script>
   </body>
 </html>
