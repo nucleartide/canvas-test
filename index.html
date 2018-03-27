@@ -115,6 +115,54 @@
         //i.onload = () => context.drawImage(i, 0, 0);
         i.src = 'https://mdn.mozillademos.org/files/12640/cat.png';
       }
+
+      // Draw text (again).
+      context.font = 'italic 10pt Calibri';
+      context.fillStyle = 'maroon'; // Color.
+      context.fillText('hello world', 20, 20);
+
+      // You can set text stroke.
+      // Text alignment.
+      // Text _vertical_ alignment, with `textBaseline`.
+      // You can measure text width. (Unsure of use cases.)
+      //   You can use text metrics to wrap text.
+
+      { // Translation. Use this to implement a Camera API.
+        const rectWidth = 20;
+        const rectHeight = 20;
+        context.translate(el.width/2, el.height/2);
+        context.fillStyle = 'blue';
+        context.fillRect(
+          rectWidth / -2,
+          rectHeight / -2,
+          rectWidth,
+          rectHeight
+        );
+
+        // Can scale context.
+        // Can rotate context.
+        // Can transform with 3x3 matrix
+        //   shear
+        // flip
+        // reset transform with .setTransform
+        // can maintain a transformation stack
+      }
+
+      // can add shadows
+      // can set transparency
+      // clip state
+      // composite operations
+
+      // Can access and manipulate image data.
+      // .getImageData
+      // .putImageData
+      // can do some image manip:
+      //   invert
+      //   grayscale
+
+      // data URLs
+      // use data-URL representation to save as image
+      console.log('data url:', el.toDataURL());
     </script>
   </body>
 </html>
