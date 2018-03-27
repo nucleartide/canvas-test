@@ -180,10 +180,11 @@
         let linearSpeed = 100;
         let newX = linearSpeed * time / 1000;
         rect.x = newX;
+        if (rect.x > 1000) rect.x = 1000;
 
         // clear
         context.clearRect(0, 0, canvas.width, canvas.height);
-        console.log('cleared rect', context);
+        //console.log('cleared rect', context);
         //console.log(JSON.stringify(rect));
         rectfill(rect.x, rect.y, rect.width, rect.height);
         requestAnimationFrame(() => animate(rect, canvas, context, startTime));
@@ -200,6 +201,25 @@
       const startTime = (new Date).getTime();
       rectfill(rect.x, rect.y, rect.width, rect.height);
       animate(rect, el, context, startTime);
+
+      // can implement linear motion (v*t)
+      // can implement acceleration (v*t + 0.5*acc*time^2)
+      // can start and stop an animation
+      // can record mouse movement
+
+      /*
+<Canvas>
+  <Rect />
+  <RedRect x={60} y={70} />
+  <BlueRect x={20} y={24} />
+</Canvas>
+
+<Canvas>
+  <Rect />
+  <RedRect @x={60} @y={70} />
+  <BlueRect @x={20} @y={24} />
+</Canvas>
+      */
     </script>
   </body>
 </html>
